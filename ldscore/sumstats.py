@@ -261,7 +261,7 @@ def cell_type_specific(args, log):
 
     M_annot_all_regr, w_ld_cname, ref_ld_cnames_all_regr, sumstats, novar_cols = \
             _read_ld_sumstats(args, log, args.h2_cts)
-    M_tot = np.sum(M_annot_all_regr)
+#    M_tot = np.sum(M_annot_all_regr) # variable assigned but never used
     _check_ld_condnum(args, log, ref_ld_cnames_all_regr)
     _warn_length(log, sumstats)
     n_snp = len(sumstats)
@@ -389,8 +389,8 @@ def estimate_rg(args, log):
                                                (args.samp_prev, '--samp-prev'),
                                                (args.pop_prev, '--pop-prev')))
     if args.no_intercept:
-        args.intercept_h2 = [1 for _ in xrange(n_pheno)]
-        args.intercept_gencov = [0 for _ in xrange(n_pheno)]
+        args.intercept_h2 = [1 for _ in range(n_pheno)]
+        args.intercept_gencov = [0 for _ in range(n_pheno)]
     p1 = rg_paths[0]
     out_prefix = args.out + rg_files[0]
     M_annot, w_ld_cname, ref_ld_cnames, sumstats, _ = _read_ld_sumstats(args, log, p1,
@@ -449,7 +449,7 @@ def _get_rg_table(rg_paths, RG, args):
     '''Print a table of genetic correlations.'''
     t = lambda attr: lambda obj: getattr(obj, attr, 'NA')
     x = pd.DataFrame()
-    x['p1'] = [rg_paths[0] for i in xrange(1, len(rg_paths))]
+    x['p1'] = [rg_paths[0] for i in range(1, len(rg_paths))]
     x['p2'] = rg_paths[1:len(rg_paths)]
     x['rg'] = map(t('rg_ratio'), RG)
     x['se'] = map(t('rg_se'), RG)
@@ -458,7 +458,7 @@ def _get_rg_table(rg_paths, RG, args):
     if args.samp_prev is not None and \
             args.pop_prev is not None and \
             all((i is not None for i in args.samp_prev)) and \
-            all((i is not None for it in args.pop_prev)):
+            all((it is not None for it in args.pop_prev)):
 
         c = map(lambda x, y: reg.h2_obs_to_liab(1, x, y), args.samp_prev[1:], args.pop_prev[1:])
         x['h2_liab'] = map(lambda x, y: x * y, c, map(t('tot'), map(t('hsq2'), RG)))
@@ -570,7 +570,7 @@ def _split_or_none(x, n):
     if x is not None:
         y = map(float, x.replace('N', '-').split(','))
     else:
-        y = [None for _ in xrange(n)]
+        y = [None for _ in range(n)]
     return y
 
 
