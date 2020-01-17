@@ -15,9 +15,11 @@ import ldscore.sumstats as sumstats
 import ldscore.regressions as reg
 import numpy as np
 import pandas as pd
+from functools import reduce
 from subprocess import call
 from itertools import product
 import time, sys, traceback, argparse
+
 
 
 try:
@@ -361,12 +363,12 @@ def ldscore(args, log):
 
     # print .M
     fout_M = open(args.out + '.'+ file_suffix +'.M','wb')
-    print >>fout_M, '\t'.join(map(str,M))
+    print('\t'.join(map(str,M)), file=fout_M)
     fout_M.close()
 
     # print .M_5_50
     fout_M_5_50 = open(args.out + '.'+ file_suffix +'.M_5_50','wb')
-    print >>fout_M_5_50, '\t'.join(map(str,M_5_50))
+    print('\t'.join(map(str,M_5_50)), file=fout_M_5_50)
     fout_M_5_50.close()
 
     # print annot matrix
@@ -647,9 +649,9 @@ if __name__ == '__main__':
 
             # bad flags
         else:
-            print header
-            print 'Error: no analysis selected.'
-            print 'ldsc.py -h describes options.'
+            print(header)
+            print('Error: no analysis selected.')
+            print('ldsc.py -h describes options.')
     except Exception:
         ex_type, ex, tb = sys.exc_info()
         log.log( traceback.format_exc(ex) )
