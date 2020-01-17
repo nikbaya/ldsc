@@ -3,6 +3,20 @@
 
 `ldsc` is a command line tool for estimating heritability and genetic correlation from GWAS summary statistics. `ldsc` also computes LD Scores.
 
+### Testing status:
+```diff
++ Rigorously tested
+! Has run successfully
+- Not run
+```
+
+### Scripts:
+```diff
+! ldsc.py
+- make_annot.py
+- munge_sumstats.py
+```
+
 ## Getting Started
 
 
