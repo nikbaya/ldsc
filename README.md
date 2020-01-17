@@ -7,7 +7,7 @@
 ```diff
 + Rigorously tested
 ! Has run successfully
-- Not run
+- Not run successfully
 ```
 
 ### Scripts:
