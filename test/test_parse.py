@@ -9,7 +9,7 @@ from nose.tools import *
 from numpy.testing import assert_array_equal, assert_array_almost_equal
 
 DIR = os.path.dirname(__file__)
-
+ 
 
 def test_series_eq():
     x = pd.Series([1, 2, 3])
