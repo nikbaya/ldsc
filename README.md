@@ -23,7 +23,7 @@
 
 In order to download `ldsc`, you should clone this repository via the commands
 ```  
-git clone https://github.com/bulik/ldsc.git
+git clone https://github.com/nikbaya/ldsc.git
 cd ldsc
 ```
 
